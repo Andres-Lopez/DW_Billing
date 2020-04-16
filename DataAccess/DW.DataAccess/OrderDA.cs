@@ -3,6 +3,7 @@ using DataAccess.DW.DataAccess.Interfaces;
 using Entities.Order;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace DataAccess.DW.DataAccess
 {
     public class OrderDA : IOrderDA
     {
-        string connectionString = @"Server=localhost\SQLEXPRESS;Database=Dev_Billing;Trusted_Connection=True;";
+
+        string connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         public CreateOrderOut CreateOrder(CreateOrderIn input)
         {
             CreateOrderOut response = new CreateOrderOut()

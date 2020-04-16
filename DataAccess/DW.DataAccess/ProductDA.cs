@@ -3,6 +3,7 @@ using DataAccess.DW.DataAccess.Interfaces;
 using Entities.Product;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DataAccess.DW.DataAccess
 {
     public class ProductDA : IProductDA
     {
-        string connectionString = @"Server=localhost\SQLEXPRESS;Database=Dev_Billing;Trusted_Connection=True;";
+        string connectionString = ConfigurationManager.AppSettings["ConnectionString"];
 
         public CreateProductOut CreateProduct(CreateProductIn input)
         {
